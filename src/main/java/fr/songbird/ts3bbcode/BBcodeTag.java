@@ -92,6 +92,7 @@ public abstract class BBcodeTag {
     /**
      * @return {@link #endTag} attribute.
      */
+    @NotNull
     protected String getEndTag() {
         return endTag;
     }
