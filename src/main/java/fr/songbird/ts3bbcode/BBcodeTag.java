@@ -67,8 +67,25 @@ public abstract class BBcodeTag {
     @NotNull
     public abstract String wrap(final String stringToWrap);
 
+    /**
+     * Adds tag parameter.
+     * <p>For instance:</p>
+     * <pre>{@code
+     * final String beginTag = "[color]";
+     * final String tagParameter = Color.BLUE.toString();
+     * final String result = new BBcodeColorTag(Color.BLUE).addTagParameter();
+     * // result => [color=BLUE]}
+     * </pre>
+     * @return If {@code beginTag} and {@code tagParameter} aren't empty,
+     * the tag with his parameter, else an empty string.
+     */
     @NotNull
-    public static String addTagParameter(String beginTag, String tagParameter) {
+    public String addTagParameter() {
+        if(!beginTag.isEmpty() && !tagParameter.isEmpty())
+        {
+            return beginTag.substring(0, beginTag.indexOf("]")) +
+                    "=" + tagParameter + "]";
+        }
         return "";
     }
 }
