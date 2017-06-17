@@ -15,7 +15,7 @@ public class BBcodeColorTag extends BBcodeTag {
     }
 
     @Override
-    public String wrap(String stringToWrap) {
-        return null;
+    public String wrap(final String stringToWrap) {
+        return super.addTagParameter() + stringToWrap + super.getEndTag();
     }
 }
