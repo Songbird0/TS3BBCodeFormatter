@@ -88,4 +88,11 @@ public abstract class BBcodeTag {
         }
         return beginTag;
     }
+
+    /**
+     * @return {@link #endTag} attribute.
+     */
+    public String getEndTag() {
+        return endTag;
+    }
 }
