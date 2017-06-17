@@ -1,0 +1,9 @@
+package fr.songbird.ts3bbcode;
+
+/**
+ * @author anthony
+ * @version 0.1.0
+ * @since 17/06/17
+ */
+public abstract class BBcodeTag {
+}
