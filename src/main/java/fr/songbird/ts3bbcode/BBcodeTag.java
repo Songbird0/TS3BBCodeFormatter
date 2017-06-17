@@ -1,7 +1,5 @@
 package fr.songbird.ts3bbcode;
 
-import com.sun.istack.internal.NotNull;
-
 import java.util.Objects;
 
 /**
