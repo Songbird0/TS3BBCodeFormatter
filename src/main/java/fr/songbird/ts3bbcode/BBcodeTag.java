@@ -77,7 +77,7 @@ public abstract class BBcodeTag {
      * // result => [color=BLUE]}
      * </pre>
      * @return If {@code beginTag} and {@code tagParameter} aren't empty,
-     * the tag with his parameter, else an empty string.
+     * the tag with his parameter, else {@code beginTag} string.
      */
     @NotNull
     public String addTagParameter() {
@@ -86,6 +86,6 @@ public abstract class BBcodeTag {
             return beginTag.substring(0, beginTag.indexOf("]")) +
                     "=" + tagParameter + "]";
         }
-        return "";
+        return beginTag;
     }
 }
