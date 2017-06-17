@@ -7,10 +7,15 @@ package fr.songbird.ts3bbcode;
  */
 public class BBcodeColorTag extends BBcodeTag {
     public BBcodeColorTag(final int rgbModel) {
-        super();
+        super("[color]", "[/color]", String.valueOf(rgbModel));
     }
 
     public BBcodeColorTag(final Color red) {
-        super();
+        super("[color]", "[/color]", red.toString());
+    }
+
+    @Override
+    public String wrap(String stringToWrap) {
+        return null;
     }
 }
