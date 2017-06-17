@@ -2,6 +2,8 @@ package fr.songbird.ts3bbcode;
 
 import com.sun.istack.internal.NotNull;
 
+import java.util.Objects;
+
 /**
  * Represents a bbcode tag.
  * <p>
@@ -36,6 +38,25 @@ public abstract class BBcodeTag {
      */
     @NotNull
     private final String tagParameter;
+
+    /**
+     * Initializes the tag properties.
+     * @param beginTag Tag pushed at the beginning.
+     * @param endTag Tag pushed at the end.
+     * @param tagParameter The tag parameter (if any) pushed into tag.
+     * @exception NullPointerException If {@code beginTag} is null.
+     * @exception NullPointerException If {@code endTag} is null.
+     * @exception NullPointerException If {@code tagParameter} is null.
+     */
+    public BBcodeTag(final String beginTag, final String endTag, final String tagParameter)
+    {
+        Objects.requireNonNull(beginTag, "beginTag cannot be null.");
+        Objects.requireNonNull(endTag, "endTag cannot be null.");
+        Objects.requireNonNull(tagParameter, "tagParameter cannot be null.");
+        this.beginTag = beginTag;
+        this.endTag = endTag;
+        this.tagParameter = tagParameter;
+    }
 
     /**
      * Wraps {@code stringToWrap} with {@code beginTag}, adds tag parameters (if any)
