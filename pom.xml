@@ -60,7 +60,7 @@
                   <docencoding>UTF-8</docencoding>
                   <docfilessubdirs>true</docfilessubdirs>
                   <show>protected</show>
-                  <source>1.8</source>
+                  <source>1.7</source>
               </configuration>
           </plugin>
       </plugins>
