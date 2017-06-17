@@ -80,7 +80,7 @@ public abstract class BBcodeTag {
      * the tag with his parameter, else {@code beginTag} string.
      */
     @NotNull
-    public String addTagParameter() {
+    protected String addTagParameter() {
         if(!beginTag.isEmpty() && !tagParameter.isEmpty())
         {
             return beginTag.substring(0, beginTag.indexOf("]")) +
@@ -92,7 +92,7 @@ public abstract class BBcodeTag {
     /**
      * @return {@link #endTag} attribute.
      */
-    public String getEndTag() {
+    protected String getEndTag() {
         return endTag;
     }
 }
