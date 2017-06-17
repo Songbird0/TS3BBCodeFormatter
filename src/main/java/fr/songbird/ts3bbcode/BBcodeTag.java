@@ -26,17 +26,14 @@ public abstract class BBcodeTag {
     /**
      * Tag pushed at the beginning (e.g. {@code [b]}, {@code [url]}).
      */
-    @NotNull
     private final String beginTag;
     /**
      * Tag pushed at the end (e.g. {@code [/b]}, {@code [/url]}).
      */
-    @NotNull
     private final String endTag;
     /**
      * The tag parameter (if any) pushed into tag (e.g. {@code [url=duckduckgo.com]...[/url]} (duckduckgo.com is a parameter)).
      */
-    @NotNull
     private final String tagParameter;
 
     /**
@@ -64,7 +61,6 @@ public abstract class BBcodeTag {
      * @param stringToWrap The string that will be wrapped by bbcode tags.
      * @return The wrapped sequence.
      */
-    @NotNull
     public abstract String wrap(final String stringToWrap);
 
     /**
@@ -79,7 +75,6 @@ public abstract class BBcodeTag {
      * @return If {@code beginTag} and {@code tagParameter} aren't empty,
      * the tag with his parameter, else {@code beginTag} string.
      */
-    @NotNull
     protected String addTagParameter() {
         if(!beginTag.isEmpty() && !tagParameter.isEmpty())
         {
@@ -92,7 +87,6 @@ public abstract class BBcodeTag {
     /**
      * @return {@link #endTag} attribute.
      */
-    @NotNull
     protected String getEndTag() {
         return endTag;
     }
