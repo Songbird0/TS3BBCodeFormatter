@@ -66,4 +66,9 @@ public abstract class BBcodeTag {
      */
     @NotNull
     public abstract String wrap(final String stringToWrap);
+
+    @NotNull
+    public static String addTagParameter(String beginTag, String tagParameter) {
+        return "";
+    }
 }
