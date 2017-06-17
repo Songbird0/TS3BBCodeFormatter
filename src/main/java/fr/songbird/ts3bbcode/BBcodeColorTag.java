@@ -9,4 +9,8 @@ public class BBcodeColorTag extends BBcodeTag {
     public BBcodeColorTag(final int rgbModel) {
         super();
     }
+
+    public BBcodeColorTag(final Color red) {
+        super();
+    }
 }
