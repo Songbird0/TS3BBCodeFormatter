@@ -45,4 +45,11 @@ public class BBcodeURLTagTest {
         expectedException.expectMessage("no protocol: duckduckgo.com");
         final BBcodeTag urlTag = new BBcodeURLTag("duckduckgo.com", true);
     }
+    @Test
+    public void constructorTest6()
+    {
+        expectedException.expect(NullPointerException.class);
+        expectedException.expectMessage("URL string reference cannot be null.");
+        final BBcodeTag urlTag = new BBcodeURLTag(null, true);
+    }
 }
