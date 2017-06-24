@@ -59,7 +59,10 @@ public abstract class BBcodeTag {
      * @param stringToWrap The string that will be wrapped by bbcode tags.
      * @return The wrapped sequence.
      */
-    public abstract String wrap(final String stringToWrap);
+    public final String wrap(final String stringToWrap)
+    {
+        return addTagParameter() + stringToWrap + getEndTag();
+    }
 
     /**
      * Adds tag parameter.
