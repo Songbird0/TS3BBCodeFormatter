@@ -1,6 +1,6 @@
 package fr.songbird.ts3bbcode;
 
-import java.util.Objects;
+import static java.util.Objects.requireNonNull;
 
 /**
  * Represents a bbcode tag.
@@ -45,9 +45,9 @@ public abstract class BBcodeTag {
      */
     public BBcodeTag(final String beginTag, final String endTag, final String tagParameter)
     {
-        Objects.requireNonNull(beginTag, "beginTag cannot be null.");
-        Objects.requireNonNull(endTag, "endTag cannot be null.");
-        Objects.requireNonNull(tagParameter, "tagParameter cannot be null.");
+        requireNonNull(beginTag, "beginTag cannot be null.");
+        requireNonNull(endTag, "endTag cannot be null.");
+        requireNonNull(tagParameter, "tagParameter cannot be null.");
         this.beginTag = beginTag;
         this.endTag = endTag;
         this.tagParameter = tagParameter;
@@ -61,6 +61,8 @@ public abstract class BBcodeTag {
      */
     protected final String wrap(final String stringToWrap)
     {
+        if(requireNonNull(stringToWrap, "stringToWrap cannot be null.").isEmpty())
+            throw new IllegalArgumentException("stringToWrap cannot be empty.");
         return addTagParameter() + stringToWrap + getEndTag();
     }
 
