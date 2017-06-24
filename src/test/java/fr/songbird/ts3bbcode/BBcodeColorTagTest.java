@@ -31,4 +31,12 @@ public class BBcodeColorTagTest {
         final String s = colorTag.wrap("My awesome text message!");
         assertThat(s, is(equalTo("[color=BEIGE]My awesome text message![/color]")));
     }
+
+    @Test
+    public void wrapMethodTest2()
+    {
+        final BBcodeColorTag colorTag = new BBcodeColorTag(Color.BLUE);
+        final String s = colorTag.wrap("My awesome text message!");
+        assertThat(s, equalTo("[color=BLUE]My awesome text message![/color]"));
+    }
 }

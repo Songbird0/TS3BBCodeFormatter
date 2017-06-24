@@ -59,7 +59,10 @@ public abstract class BBcodeTag {
      * @param stringToWrap The string that will be wrapped by bbcode tags.
      * @return The wrapped sequence.
      */
-    public abstract String wrap(final String stringToWrap);
+    protected final String wrap(final String stringToWrap)
+    {
+        return addTagParameter() + stringToWrap + getEndTag();
+    }
 
     /**
      * Adds tag parameter.
@@ -73,7 +76,7 @@ public abstract class BBcodeTag {
      * @return If {@code beginTag} and {@code tagParameter} aren't empty,
      * the tag with his parameter, else {@code beginTag} string.
      */
-    protected String addTagParameter() {
+    private String addTagParameter() {
         if(!beginTag.isEmpty() && !tagParameter.isEmpty())
         {
             return beginTag.substring(0, beginTag.indexOf("]")) +
@@ -85,7 +88,7 @@ public abstract class BBcodeTag {
     /**
      * @return {@link #endTag} attribute.
      */
-    protected String getEndTag() {
+    private String getEndTag() {
         return endTag;
     }
 }
