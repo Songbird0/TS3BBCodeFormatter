@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
  * @author anthony
@@ -27,29 +28,10 @@ public class BBcodeURLTagTest {
         final BBcodeTag urlTag = new BBcodeURLTag("");
     }
     @Test
-    public void constructorTest3()
-    {
-        expectedException.expect(NullPointerException.class);
-        expectedException.expectMessage("URL string reference cannot be null.");
-        final BBcodeTag urlTag = new BBcodeURLTag(null);
-    }
-    @Test
-    public void constructorTest4()
-    {
-        final BBcodeTag urlTag = new BBcodeURLTag("https://duckduckgo.com", true);
-    }
-    @Test
-    public void constructorTest5()
+    public void constructorTest3() throws MalformedURLException
     {
         expectedException.expect(MalformedURLException.class);
         expectedException.expectMessage("no protocol: duckduckgo.com");
-        final BBcodeTag urlTag = new BBcodeURLTag("duckduckgo.com", true);
-    }
-    @Test
-    public void constructorTest6()
-    {
-        expectedException.expect(NullPointerException.class);
-        expectedException.expectMessage("URL string reference cannot be null.");
-        final BBcodeTag urlTag = new BBcodeURLTag(null, true);
+        final BBcodeTag urlTag = new BBcodeURLTag(new URL("duckduckgo.com"));
     }
 }

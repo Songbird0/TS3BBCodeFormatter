@@ -1,5 +1,8 @@
 package fr.songbird.ts3bbcode;
 
+import java.net.URL;
+import java.util.Objects;
+
 /**
  * @author anthony
  * @since 24/06/17
@@ -10,34 +13,32 @@ public class BBcodeURLTag extends BBcodeTag {
      * and puts {@code urlString} as URL.<br>
      * For example:
      * <pre>{@code
-     * final BBcodeTag url = new BBcodeURLTag("duckduckgo.com", false);
+     * final BBcodeTag url = new BBcodeURLTag("duckduckgo.com");
      * final String yourBBcodeTextMessage = url.wrap("Click here!");
      * System.out.println(yourBBcodeTextMessage); // prints [url=duckduckgo.com]Click here![/url]}</pre>
-     * @param urlString The URL to submit as bbcode tag parameter.
-     * @param urlValidityChecking Bind this at {@code true} if you want an URL form checking, {@code false} otherwise.<br>
-     *                            For instance:<pre>{@code
-     * // Here, a MalformedURLException will be thrown.
-     * final BBcodeTag url = new BBcodeURLTag("duckduckgo.com", true);
-     * // If you don't want this feature, bind to {@code false}
-     * // final BBcodeTag url = new BBcodeURLTag("duckduckgo.com", false);
-     * final String yourBBcodeTextMessage = url.wrap("Click here!");
-     * System.out.println(yourBBcodeTextMessage); // prints [url=duckduckgo.com]Click here![/url]}</pre>
-     * Also, url validity checking feature may be disabled by using {@code BBcodeURLTag} overload.
+     * @param urlString The URL to submit as bbcode tag parameter..
      * @see #BBcodeURLTag(String)
      */
-    public BBcodeURLTag(final String urlString, final boolean urlValidityChecking) {
-        super("[url]", "[/url]", urlString);
+    public BBcodeURLTag(final String urlString) {
+        super("[url]", "[/url]", urlSanitizing(urlString));
+    }
+
+    private static String urlSanitizing(final String urlString) {
+        if(Objects.requireNonNull(urlString, "URL string reference cannot be null.")
+                .isEmpty())
+        {
+            throw new IllegalArgumentException("URL string cannot be empty.");
+        }
+        return urlString;
     }
 
     /**
      * Wraps your text message with {@code [url][/url]} bbcode tags
      * and puts {@code urlString} as URL.
-     * <p>Additionally, this overload disable url validity checking.</p>
-     * @param urlString The URL to submit as bbcode tag parameter.
-     * @see #BBcodeURLTag(String, boolean) Click here for more examples.
+     * @param url The URL to submit as bbcode tag parameter.
      */
-    public BBcodeURLTag(final String urlString)
+    public BBcodeURLTag(final URL url)
     {
-        this(urlString, false);
+        this(url.toString());
     }
 }
