@@ -7,6 +7,9 @@ import org.junit.rules.ExpectedException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.IsEqual.equalTo;
+
 /**
  * @author anthony
  * @since 24/06/17
@@ -33,5 +36,13 @@ public class BBcodeURLTagTest {
         expectedException.expect(MalformedURLException.class);
         expectedException.expectMessage("no protocol: duckduckgo.com");
         final BBcodeTag urlTag = new BBcodeURLTag(new URL("duckduckgo.com"));
+
+    }
+    @Test
+    public void wrapMethodTest()
+    {
+        final BBcodeTag urlTag = new BBcodeURLTag("duckduckgo.com");
+        final String textMessageContent = urlTag.wrap("Here's my favorite web browser, click here ! :D");
+        assertThat(textMessageContent, equalTo("[url=duckduckgo.com]Here's my favorite web browser, click here ! :D[/url]"));
     }
 }
