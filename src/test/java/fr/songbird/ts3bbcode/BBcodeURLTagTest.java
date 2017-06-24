@@ -12,7 +12,7 @@ import java.net.MalformedURLException;
  */
 public class BBcodeURLTagTest {
     @Rule
-    private final ExpectedException expectedException = ExpectedException.none();
+    public final ExpectedException expectedException = ExpectedException.none();
 
     @Test
     public void constructorTest1()
