@@ -4,6 +4,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 
@@ -63,5 +66,11 @@ public class BBcodeFormatterTest {
                         new BBcodeColorTag(Color.PURPLE));
         final String textMessageContent = formatter.toBBcodeString();
         assertThat(textMessageContent, equalTo("[color=PURPLE][i][b][u]Stylish buffered bbcode string.[/u][/b][/i][/color]"));
+    }
+    @Test
+    public void textFormattingTest4() throws MalformedURLException {
+        final BBcodeFormatter formatter = new BBcodeFormatter("Click me!", new BBcodeURLTag(new URL("https://duckduckgo.com")));
+        final String textMessageContent = formatter.toBBcodeString();
+        assertThat(textMessageContent, equalTo("[url=https://duckduckgo.com]Click me![/url]"));
     }
 }
