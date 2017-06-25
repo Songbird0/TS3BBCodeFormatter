@@ -73,4 +73,60 @@ public class BBcodeFormatterTest {
         final String textMessageContent = formatter.toBBcodeString();
         assertThat(textMessageContent, equalTo("[url=https://duckduckgo.com]Click me![/url]"));
     }
+    @Test
+    public void stressTest1()
+    {
+        expectedException.expect(NullPointerException.class);
+        expectedException.expectMessage("The string cannot be null.\n" +
+                "Please use the BBcodeFormatter() constructor instead.");
+        final BBcodeFormatter formatter = new BBcodeFormatter(null, new BBcodeBoldTag());
+    }
+    @Test
+    public void stressTest2()
+    {
+        expectedException.expect(NullPointerException.class);
+        expectedException.expectMessage("Your bbcode tags list cannot be null.\n" +
+                "Please use the BBcodeFormatter(String) constructor instead.");
+        final BBcodeFormatter formatter = new BBcodeFormatter("Hi there!", null);
+    }
+    @Test
+    public void stressTest3()
+    {
+        expectedException.expect(NullPointerException.class);
+        expectedException.expectMessage("The string cannot be null.\n" +
+                "Please use the BBcodeFormatter() constructor instead.");
+        final BBcodeFormatter formatter = new BBcodeFormatter(null);
+    }
+    @Test
+    public void stressTest4()
+    {
+        expectedException.expect(NullPointerException.class);
+        expectedException.expectMessage("string cannot be null.");
+        final BBcodeFormatter formatter = new BBcodeFormatter("red text message", new BBcodeColorTag(Color.RED))
+                .append(null);
+    }
+    @Test
+    public void stressTest5()
+    {
+        expectedException.expect(IllegalArgumentException.class);
+        expectedException.expectMessage("string cannot be empty.");
+        final BBcodeFormatter formatter = new BBcodeFormatter("red text message", new BBcodeColorTag(Color.RED))
+                .append("");
+    }
+    @Test
+    public void stressTest6()
+    {
+        expectedException.expect(IllegalArgumentException.class);
+        expectedException.expectMessage("string cannot be empty.");
+        final BBcodeFormatter formatter = new BBcodeFormatter("red text message", new BBcodeColorTag(Color.RED))
+                .append("", new BBcodeBoldTag());
+    }
+    @Test
+    public void stressTest7()
+    {
+        expectedException.expect(IllegalArgumentException.class);
+        expectedException.expectMessage("string cannot be empty.");
+        final BBcodeFormatter formatter = new BBcodeFormatter("red text message", new BBcodeColorTag(Color.RED))
+                .append("", new BBcodeBoldTag(), new BBcodeItalicTag());
+    }
 }
