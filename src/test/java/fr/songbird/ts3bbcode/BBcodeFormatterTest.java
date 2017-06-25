@@ -37,7 +37,7 @@ public class BBcodeFormatterTest {
         formatter.appendCarriageReturn()
                 .append("red text message.", new BBcodeColorTag(Color.RED))
                 .appendCarriageReturn()
-                .append("bold green message.", new BBcodeColorTag(Color.GREEN), new BBcodeBoldTag());
+                .append("bold green message.", new BBcodeBoldTag(), new BBcodeColorTag(Color.GREEN));
         final String textMessageContent = formatter.toString();
         assertThat(textMessageContent, equalTo("Simple buffered string. No bbcode here.\n" +
                 "[color=RED]red text message.[/color]\n" +
