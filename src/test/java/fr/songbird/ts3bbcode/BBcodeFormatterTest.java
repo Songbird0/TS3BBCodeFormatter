@@ -57,10 +57,10 @@ public class BBcodeFormatterTest {
     {
         final BBcodeFormatter formatter =
                 new BBcodeFormatter("Stylish buffered bbcode string.",
-                        new BBcodeColorTag(Color.PURPLE),
-                        new BBcodeItalicTag(),
+                        new BBcodeUnderlineTag(),
                         new BBcodeBoldTag(),
-                        new BBcodeUnderlineTag());
+                        new BBcodeItalicTag(),
+                        new BBcodeColorTag(Color.PURPLE));
         final String textMessageContent = formatter.toBBcodeString();
         assertThat(textMessageContent, equalTo("[color=PURPLE][i][b][u]Stylish buffered bbcode string.[/u][/b][/i][/color]"));
     }
