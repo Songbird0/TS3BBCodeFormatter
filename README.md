@@ -43,4 +43,4 @@ final BBcodeFormatter format = new BBcodeFormatter("Hi, I'm ")
 apiInstance.sendServerMessage(format.toBBcodeString());
 ```
 
-That's it! Keep in mind that you create more complex bbcode strings with it! Have fun!
+That's it! Keep in mind that you can create more complex bbcode strings with it! Have fun!
